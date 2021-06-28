@@ -1,9 +1,12 @@
 import React, {useState} from 'react' 
+import {useDispatch} from 'react-redux'
 import { addTodo, deleteTodo, removeTodo} from '../actions/index'
 import './Todo.css'
 
 const Todo = () => {
     const [inputData, setInputData] = useState('')
+    const dispatch = useDispatch()
+
     return (
         <div>
             <div className="main-div">
@@ -16,7 +19,7 @@ const Todo = () => {
                         value = {inputData}
                         onChange = {(event) => setInputData(event.target.value)}
                         />
-                        <i className="fa fa-plus add-btn"></i>
+                        <i className="fa fa-plus add-btn" onClick = {() => dispatch(addTodo(inputData))} ></i>
                     </div>
                 </div>
             </div>
